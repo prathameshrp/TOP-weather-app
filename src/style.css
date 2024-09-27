@@ -83,3 +83,7 @@ body
     font-size: calc(4.4rem + var(--resizer));
     font-weight: 800;
 }
+.temp-info .info
+{
+    font-size: calc(0.4rem + var(--resizer));
+}
