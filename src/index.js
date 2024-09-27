@@ -38,7 +38,7 @@ let sunrise;
 let sunset;
 let uvIndex;
 let visibility;
-
+var a = 4;
 fetchData(city).then((response)=>{
     data = response;
     const current = data.currentConditions;
