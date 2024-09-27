@@ -1,0 +1,49 @@
+/* variable font style */
+/* Usage: */
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 400 to 700
+
+.arimo-<uniquifier> {
+  font-family: "Arimo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */
+
+
+
+
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #fffd;
+    font-family: "Arimo", sans-serif;
+}
+
+:root
+{
+    --resizer: calc(0.5rem + 0.6vw + 0.2vh);
+}
+
+
+body
+{
+    background-color: #0c1322;
+    /* background: url(''); */
+}
+
+#main-header
+{
+    height: clamp(40px, 8vh, 80px);
+    width: 100vw;
+    background-color: rgba(250, 235, 215, 0.068);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(0.5rem + var(--resizer));
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.158);
+}
