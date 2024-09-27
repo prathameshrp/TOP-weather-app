@@ -47,3 +47,39 @@ body
     padding: calc(0.5rem + var(--resizer));
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.158);
 }
+#main-header .city
+{
+    font-size: calc(0.8rem + var(--resizer));
+    font-weight: 400;
+}
+#main-header .menu
+{
+    display: flex;
+    list-style-type: none;
+    gap: 0.5em;
+    font-size: calc(0.4rem + var(--resizer));
+}
+
+#weather-board
+{
+    height: clamp(320px, 30vh, 440px);
+    width: 100vw;
+    background-color: rgba(250, 235, 215, 0.068);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(0.5rem + var(--resizer));
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.158);
+}
+#weather-board .temp-info
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.temp-info .temp
+{
+    font-size: calc(4.4rem + var(--resizer));
+    font-weight: 800;
+}
