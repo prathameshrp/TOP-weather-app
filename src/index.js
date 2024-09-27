@@ -27,9 +27,29 @@ function fetchData(city) {
 
 let city = "pune";
 let data;
+let temp;
+let windSpeed;
+let feelsLike;
+let humidity;
+let conditions;
+let cloudCover;
+let pressure;
+let sunrise;
+let sunset;
+let uvIndex;
+let visibility;
+
 fetchData(city).then((response)=>{
     data = response;
-container.textContent = JSON.stringify(data);
+    const current = data.currentConditions;
+// container.textContent = JSON.stringify(data);
+let curr_weather = [
+    current.temp, current.windspeed, current.feelslike, current.humidity, current.conditions, current.cloudcover, current.pressure, current.sunrise, current.sunset, current.uvindex, current.visibility
+];
+    [temp, windSpeed, feelsLike, humidity, conditions, cloudCover, pressure, sunrise, sunset, uvIndex, visibility] = curr_weather;
+  
+    container.textContent = curr_weather; 
+// console.log(data);
 
 })
 
