@@ -12,5 +12,5 @@ fetchData(context)
   .then((response) => {
     data = response;
     console.log(response);
-    updateDOM(data.current);
+    updateDOM(data);
   });

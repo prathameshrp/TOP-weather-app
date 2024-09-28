@@ -85,5 +85,30 @@ body
 }
 .temp-info .info
 {
-    font-size: calc(0.4rem + var(--resizer));
+    font-size: calc(0.2rem + var(--resizer));
+    text-align: center;
+    word-wrap: break-word;
+    /* word-break: break-all; */
+    width: clamp(320px, 50vw, 840px);
+}
+
+#weather-forecast
+{
+    width: 100vw;
+    padding: calc(0.2rem + var(--resizer));
+}
+
+.day-pallete
+{
+    display: flex;
+    padding: calc(0.4rem + var(--resizer));
+    border: 1px solid rgba(212, 202, 201, 0.171);
+    border-radius: 10px;
+    margin: calc(0.4rem + var(--resizer));
+    background-color: #0c0f16;
+}
+.day-pallete .time-stamp
+{
+    display: flex;
+    flex-direction: column;
 }
