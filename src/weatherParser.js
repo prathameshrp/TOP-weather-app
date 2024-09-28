@@ -1,7 +1,12 @@
 const visualCrossingKey = '3QH2GPU2XG47GA766KANPM69X';
 
-function returnObj(response) {
-  console.log(response);
+function returnObj(data) {
+  // console.log(response);
+  const weather = {
+    temperature: data.temp,
+    conditions: data.conditions,
+  };
+  return weather;
 }
 
 export default function fetchData(context) {
@@ -11,8 +16,13 @@ export default function fetchData(context) {
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/${date1}?key=${visualCrossingKey}`,
     )
       .then((response) => {
-        if (response.ok) resolve(returnObj(response.json()));
-        else throw new Error('Something went wrong');
+        // console.log(response.json());
+        if (response.ok) return response.json();
+        throw new Error('Something went wrong');
+      })
+      .then((response) => {
+        const data = response.currentConditions;
+        resolve(returnObj(data));
       })
       .catch((err) => {
         console.error('Error: ', err);
