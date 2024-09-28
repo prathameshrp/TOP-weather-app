@@ -2,9 +2,14 @@ const visualCrossingKey = '3QH2GPU2XG47GA766KANPM69X';
 
 function returnObj(data) {
   // console.log(response);
+  const [currentConditions, dayConditions] = [data.currentConditions, data.days[0]];
+
   const weather = {
-    temperature: data.temp,
-    conditions: data.conditions,
+    current: {
+      temperature: currentConditions.temp,
+      conditions: currentConditions.conditions,
+    },
+    day: dayConditions,
   };
   return weather;
 }
@@ -17,12 +22,13 @@ export default function fetchData(context) {
     )
       .then((response) => {
         // console.log(response.json());
+        const response1 = response.clone();
+        console.log(response1.json());
         if (response.ok) return response.json();
         throw new Error('Something went wrong');
       })
       .then((response) => {
-        const data = response.currentConditions;
-        resolve(returnObj(data));
+        resolve(returnObj(response));
       })
       .catch((err) => {
         console.error('Error: ', err);

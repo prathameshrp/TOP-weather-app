@@ -7,10 +7,10 @@ const context = {
   date: (new Date()).toISOString(),
 };
 
-// let data;
+let data;
 fetchData(context)
   .then((response) => {
-    // data = response;
+    data = response;
     console.log(response);
-    updateDOM(response);
+    updateDOM(data.current);
   });
