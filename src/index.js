@@ -6,16 +6,8 @@ import {
   updateForecastPallete,
 } from './domHandler';
 
-const cache = {};
-
-function importAll(r) {
-  r.keys().forEach((key) => (cache[key] = r(key)));
-}
-
-const images = importAll(require.context('../assets/icons', true, /\.(png|svg|jpg|jpeg|gif|ico)$/));
-console.log(cache);
 // console.log(imgs['./clear-day.svg']);
-const tempContext = {
+const currContext = {
   location: 'pune',
   date: (new Date()).toISOString(),
 };
@@ -38,14 +30,21 @@ function mediate(context) {
     // console.log(forecastData);
     });
 }
-mediate(tempContext);
+mediate(currContext);
 
 (function runContext() {
   const searchElement = document.querySelector('#search');
-  const searchBtn = document.querySelector('#search-btn')
-  searchBtn.addEventListener('click', () => {
-    [context.location, context.date] = [searchElement.value, (new Date()).toISOString()];
+  const searchBtn = document.querySelector('#search-btn');
 
-    mediate(context);
+  const fireChange = () => {
+    [currContext.location, currContext.date] = [searchElement.value, (new Date()).toISOString()];
+
+    mediate(currContext);
+  };
+
+  searchBtn.addEventListener('click', fireChange);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') fireChange();
   });
 }());
