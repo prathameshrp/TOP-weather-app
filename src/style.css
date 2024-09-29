@@ -138,6 +138,22 @@ body
     display: flex;
     justify-content: space-between;
 }
+.day-stamp #forecast-date, 
+.day-stamp #forecast-day,
+.day-stamp #forecasr-icn,
+.day-stamp #forecast-temp
+{
+    min-width: fit-content;
+    /* border: 1px solid salmon; */
+    width: 20%;
+    max-width: 120px;
+}
+.day-stamp #forecast-date
+{
+    text-align: center;
+}
+
+
 /* Scrollbar style */
 /* width */
 ::-webkit-scrollbar {

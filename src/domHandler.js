@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 const Units = Object.freeze({
   FARENHEIT: 0,
   DEGREE: 1,
@@ -69,11 +71,11 @@ function updateForecastPallete(data) {
     const tmp = dayBoard.querySelector('#forecast-temp');
 
     date.textContent = day.datetime;
-    weekDay.textContent = 'placeholder';
+    weekDay.textContent = format(new Date(day.datetime), 'EEEE').substring(0, 3);
     const maxTemp = day.tempmax;
     const minTemp = day.tempmin;
-    if (tempUnit) tmp.textContent = `${Math.round(farenheitToDegree(maxTemp))}\u00b0 / ${Math.round(farenheitToDegree(minTemp))}`;
-    else tmp.textContent = `${Math.round(maxTemp)} / ${Math.round(minTemp)}`;
+    if (tempUnit) tmp.textContent = `${Math.round(farenheitToDegree(maxTemp))}\u00b0 / ${Math.round(farenheitToDegree(minTemp))}\u00b0`;
+    else tmp.textContent = `${Math.round(maxTemp)}\u00b0 / ${Math.round(minTemp)}\u00b0`;
 
     forecastPallete.appendChild(dayBoard);
   });

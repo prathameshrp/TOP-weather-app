@@ -24,6 +24,6 @@ let forecastData;
 forecast(context)
   .then((response) => {
     forecastData = response;
-    updateForecastPallete(response)
+    updateForecastPallete(forecastData);
     // console.log(forecastData);
   });
