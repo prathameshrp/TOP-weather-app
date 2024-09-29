@@ -106,9 +106,40 @@ body
     border-radius: 10px;
     margin: calc(0.4rem + var(--resizer));
     background-color: #0c0f16;
+    overflow-x: auto;
+    gap: 16px;
 }
+
 .day-pallete .time-stamp
 {
     display: flex;
     flex-direction: column;
+    gap: 8px;
+    padding: 0 calc(0.2rem + var(--resizer));
+
 }
+
+/* Scrollbar style */
+/* width */
+::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #6d6969; 
+    border-radius: 50px;
+
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+
+    background: #555; 
+  }

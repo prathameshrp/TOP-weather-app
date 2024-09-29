@@ -14,7 +14,7 @@ function returnObj(data) {
   return weather;
 }
 
-export default function fetchData(context) {
+export default function fetchCurrentData(context) {
   const [location, date1] = [context.location, context.date];
   return new Promise((resolve) => {
     fetch(
@@ -35,3 +35,18 @@ export default function fetchData(context) {
       });
   });
 }
+
+function forecast(context) {
+  const [location] = [context.location];
+
+  return new Promise((resolve) => {
+    fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${visualCrossingKey}`)
+      .then((response) => {
+        if (response.ok) resolve(response.json());
+      });
+  });
+}
+
+export {
+  forecast,
+};

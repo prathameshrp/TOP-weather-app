@@ -1,6 +1,9 @@
 import './style.css';
-import fetchData from './weatherParser';
-import updateDOM from './domHandler';
+import fetchData, {forecast} from './weatherParser';
+import {
+  updateWeatherBoard,
+  updateWeatherPallete,
+} from './domHandler';
 
 const context = {
   location: 'pune',
@@ -11,6 +14,14 @@ let data;
 fetchData(context)
   .then((response) => {
     data = response;
-    console.log(response);
-    updateDOM(data);
+    updateWeatherBoard(data);
+    // console.log('day:', data.day);
+    updateWeatherPallete(data.day);
+  });
+
+let forecastData;
+forecast(context)
+  .then((response) => {
+    forecastData = response;
+    console.log(forecastData);
   });
