@@ -6,7 +6,16 @@ import {
   updateForecastPallete,
 } from './domHandler';
 
-const context = {
+const cache = {};
+
+function importAll(r) {
+  r.keys().forEach((key) => (cache[key] = r(key)));
+}
+
+const images = importAll(require.context('../assets/icons', true, /\.(png|svg|jpg|jpeg|gif|ico)$/));
+console.log(cache);
+// console.log(imgs['./clear-day.svg']);
+const tempContext = {
   location: 'pune',
   date: (new Date()).toISOString(),
 };
@@ -29,7 +38,7 @@ function mediate(context) {
     // console.log(forecastData);
     });
 }
-mediate(context);
+mediate(tempContext);
 
 (function runContext() {
   const searchElement = document.querySelector('#search');

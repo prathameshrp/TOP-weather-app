@@ -1,5 +1,15 @@
 import { format } from 'date-fns';
 import { capitalize } from 'lodash';
+
+const cache = {};
+
+function importAll(r) {
+  r.keys().forEach((key) => (cache[key] = r(key)));
+}
+
+const images = importAll(require.context('../assets/icons', true, /\.(png|svg|jpg|jpeg|gif|ico)$/));
+// console.log(cache);
+
 const Units = Object.freeze({
   FARENHEIT: 0,
   DEGREE: 1,
@@ -48,9 +58,11 @@ function updateWeatherPallete(dayData) {
     const hrBoard = template.content.cloneNode(true);
 
     const time = hrBoard.querySelector('#hr');
-    // const icn = hrBoard.querySelector('#icn');
+    const icn = hrBoard.querySelector('#icn');
     const tmp = hrBoard.querySelector('#tmp');
 
+    icn.src = cache[`./${hr.icon}.svg`];
+    // console.log(hr.icon);
     time.textContent = hr.datetime.substring(0, 5);
     if (tempUnit) tmp.textContent = `${Math.round(farenheitToDegree(hr.temp))}\u00b0C`;
     else tmp.textContent = `${Math.round(hr.temp)}\u00b0F`;
@@ -69,9 +81,9 @@ function updateForecastPallete(data) {
 
     const date = dayBoard.querySelector('#forecast-date');
     const weekDay = dayBoard.querySelector('#forecast-day');
-    // const icn = dayBoard.querySelector('#forecast-icn');
+    const icn = dayBoard.querySelector('#forecast-icn');
+    // icn.src = ${hr.icon}.svg;
     const tmp = dayBoard.querySelector('#forecast-temp');
-
     date.textContent = format(new Date(day.datetime), 'do MMM');
     weekDay.textContent = format(new Date(day.datetime), 'EEE');
     const maxTemp = day.tempmax;

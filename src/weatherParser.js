@@ -9,6 +9,7 @@ function returnObj(data) {
     current: {
       temperature: currentConditions.temp,
       conditions: currentConditions.conditions,
+      icon: currentConditions.icon,
     },
     day: dayConditions,
   };
