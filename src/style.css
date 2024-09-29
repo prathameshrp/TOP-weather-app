@@ -134,6 +134,7 @@ body
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 .temp-info .temp
 {
@@ -225,6 +226,7 @@ body
     grid-auto-rows: clamp(30px, 1fr,180px);
     margin: 1rem 2rem; */
     gap: clamp(12px, calc(4vw + var(--resizer)), 12%);  
+    position: relative;
   }
 
   .misc-board .parameter
@@ -314,4 +316,39 @@ input:invalid
     width: max-content;
     font-size: var(--resizer);
     border-radius: 6px;
+}
+
+.loading-mask
+{
+    position: absolute;
+    background-color: #555;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+    transition: all 0.3s ease-in-out;
+}
+.loading-mask i{
+    font-size: calc(4rem + var(--resizer));
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink
+{
+    0%
+    {
+        opacity: 0.1;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%
+    {
+        opacity: 0.1;
+    }
 }

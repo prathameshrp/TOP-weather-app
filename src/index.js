@@ -16,12 +16,15 @@ const currContext = {
 
 function mediate(context) {
   let data;
+
   fetchData(context)
     .then((response) => {
       data = response;
       updateWeatherBoard(data);
       // console.log('day:', data.day);
       updateWeatherPallete(data.day);
+      const loads = document.querySelectorAll('.loading-mask');
+      for (let i = 0; i < 2; i += 1) loads[i].style.display = 'none';
     });
 
   let forecastData;

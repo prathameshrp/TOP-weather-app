@@ -6,6 +6,8 @@ export default function validateData(mediate) {
 
   const fireChange = () => {
     [currContext.location, currContext.date] = [searchElement.value, (new Date()).toISOString()];
+    const loads = document.querySelectorAll('.loading-mask');
+    for (let i = 0; i < 2; i += 1) loads[i].style.display = 'block';
     mediate(currContext);
   };
 
