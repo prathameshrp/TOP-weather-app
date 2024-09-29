@@ -5,6 +5,7 @@ function returnObj(data) {
   const [currentConditions, dayConditions] = [data.currentConditions, data.days[0]];
 
   const weather = {
+    address: data.address,
     current: {
       temperature: currentConditions.temp,
       conditions: currentConditions.conditions,

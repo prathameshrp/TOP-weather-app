@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-
+import { capitalize } from 'lodash';
 const Units = Object.freeze({
   FARENHEIT: 0,
   DEGREE: 1,
@@ -11,7 +11,9 @@ function farenheitToDegree(temp) {
 }
 
 function updateWeatherBoard(data) {
-  const [currentData, dayData] = [data.current, data.day];
+  const [currentData, dayData, address] = [data.current, data.day, data.address];
+  const city = document.querySelector('.city');
+  city.textContent = capitalize(address);
   const temp = document.querySelectorAll('.temp');
   if (tempUnit) {
     temp[0].textContent = parseInt(farenheitToDegree(currentData.temperature) * 10, 10) / 10;
