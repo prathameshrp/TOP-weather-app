@@ -42,9 +42,42 @@ mediate(currContext);
     mediate(currContext);
   };
 
-  searchBtn.addEventListener('click', fireChange);
+  const form = document.querySelector('form');
+  const error = document.querySelector('.errorClass');
+
+  function showError() {
+    if (searchElement.validity.valueMissing) {
+      error.textContent = 'Please enter a value!';
+    } else {
+      error.textContent = 'Please enter at least 3 characters!';
+    }
+  }
+
+  searchElement.addEventListener('input', () => {
+    if (!searchElement.validity.valid) {
+      showError();
+    } else error.textContent = '';
+  });
+
+  form.addEventListener('submit', (e) => {
+    if (!searchElement.validity.valid) {
+      showError();
+      e.preventDefault();
+    } else {
+      e.preventDefault();
+      fireChange();
+    }
+  });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') fireChange();
+    if (e.key === 'Enter') {
+      if (!searchElement.validity.valid) {
+        showError();
+        e.preventDefault();
+      } else {
+        e.preventDefault();
+        fireChange();
+      }
+    }
   });
 }());

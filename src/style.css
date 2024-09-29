@@ -80,7 +80,6 @@ body
 {
     outline: none;
     border: 1px solid gray;
-    height: 100%;
     background-color: var(--primary-clr);
     font-size: calc(var(--resizer));
     font-weight: 400;
@@ -88,7 +87,7 @@ body
     /* width: 240px; */
     /* width: 24vw; */
     /* width: 440px; */
-    padding: 16px calc(0.04rem + var(--resizer));
+    padding: min(8px, 4vh) calc(0.04rem + var(--resizer));
 
 }
 
@@ -242,7 +241,8 @@ body
     justify-content: space-around;
     padding: clamp(4px, var(--resizer), 20px);
     backdrop-filter: grayscale(100%) opacity(60%);
-    gap: clamp(4px, calc(4% + var(--resizer)), 12%);  
+    gap: clamp(4px, calc(4% + var(--resizer)), 12%); 
+    border-radius: 16px; 
     
   }
 
@@ -290,3 +290,28 @@ body
 
     background: #555; 
   }
+
+  /* form errors styling */
+
+input:invalid
+{
+    border: 1px solid salmon;
+    box-shadow: 0 0 5px #00000034;
+    background-color: rgba(250, 128, 114, 0.315);
+}
+
+.errorClass
+{
+    background-color: rgba(250, 128, 114, 0.637);
+    width: fit-content;
+    color: white;
+    height: fit-content;
+    font-size: medium;
+    transition: all 0.3s ease-out;
+    /* padding: clamp(6px, 1vh, 30px) var(--resizer); */
+    align-self: center;
+    height: 4vh;
+    width: max-content;
+    font-size: var(--resizer);
+    border-radius: 6px;
+}
