@@ -104,16 +104,16 @@ body
 #weather-forecast
 {
     width: 100%;
-    padding: calc(0.2rem + var(--resizer));
+    /* padding: calc(0.2rem + var(--resizer)); */
 }
 
-.day-pallete, .forecast-pallete
+.pallete
 {
     display: flex;
     padding: calc(0.4rem + var(--resizer));
     border: 1px solid rgba(212, 202, 201, 0.171);
     border-radius: 10px;
-    margin: calc(0.4rem + var(--resizer));
+    margin: calc(0.4rem + var(--resizer)) 0;
     background-color: #0c0f16;
     overflow-x: auto;
     gap: 16px;
