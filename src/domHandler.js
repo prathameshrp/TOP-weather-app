@@ -70,7 +70,7 @@ function updateForecastPallete(data) {
     // const icn = dayBoard.querySelector('#forecast-icn');
     const tmp = dayBoard.querySelector('#forecast-temp');
 
-    date.textContent = day.datetime;
+    date.textContent = format(new Date(day.datetime), 'do MMM');
     weekDay.textContent = format(new Date(day.datetime), 'EEE');
     const maxTemp = day.tempmax;
     const minTemp = day.tempmin;
