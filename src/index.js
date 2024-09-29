@@ -15,7 +15,16 @@ const currContext = {
   date: (new Date()).toISOString(),
 };
 
+function clearDOM()
+{
+  const template = document.querySelector('.time-stamp-temp');
+  const dayPallete = document.querySelector('.day-pallete');
+  const template2 = document.querySelector('.day-stamp-temp');
+  const forecastPallete = document.querySelector('.forecast-pallete');
+  dayPallete.replaceChildren(template);
 
+  forecastPallete.replaceChildren(template2);
+}
 function mediate(context) {
   let data;
 
@@ -27,6 +36,13 @@ function mediate(context) {
       updateWeatherPallete(data.day);
       const loads = document.querySelectorAll('.loading-mask');
       for (let i = 0; i < 2; i += 1) loads[i].style.display = 'none';
+    })
+    .catch((err) => {
+      const loads = document.querySelectorAll('.loading-mask');
+      for (let i = 0; i < 2; i += 1) loads[i].textContent = '';
+      const errClass = document.querySelector('.errorClass');
+      errClass.textContent = 'INVALID PLACE! Please input a real location.';
+      clearDOM();
     });
 
   let forecastData;
@@ -35,6 +51,9 @@ function mediate(context) {
       forecastData = response;
       updateForecastPallete(forecastData);
     // console.log(forecastData);
+    })
+    .catch((err) => {
+        console.log('Unexpected Error');
     });
 }
 getLocation().then((response) => {
