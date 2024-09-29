@@ -9,7 +9,7 @@ export default function validateData(mediate) {
     mediate(currContext);
   };
 
-  const searchElement = document.querySelector('#search')
+  const searchElement = document.querySelector('#search');
   const form = document.querySelector('form');
   const error = document.querySelector('.errorClass');
 
