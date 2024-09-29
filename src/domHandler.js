@@ -19,9 +19,19 @@ let tempUnit = Units.DEGREE;
 function farenheitToDegree(temp) {
   return (temp - 32) * (5 / 9);
 }
+function updateMisc(data)
+{
+  const features = ['uvindex', 'feelslike', 'humidity', 'windspeed', 'pressure', 'visibility'];
+
+  features.forEach((feat) => {
+    const ele = document.querySelector(`#${feat}`);
+    ele.textContent = data[feat];
+  });
+}
 
 function updateWeatherBoard(data) {
   const [currentData, dayData, address] = [data.current, data.day, data.address];
+  updateMisc(currentData);
   const city = document.querySelector('.city');
   city.textContent = capitalize(address);
   const temp = document.querySelectorAll('.temp');
@@ -70,6 +80,7 @@ function updateWeatherPallete(dayData) {
     dayPallete.appendChild(hrBoard);
   });
 }
+
 
 function updateForecastPallete(data) {
   const [days] = [data.days];

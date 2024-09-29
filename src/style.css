@@ -14,7 +14,7 @@
 
 
 
-
+@charset 'utf-8';
 
 *{
     margin: 0;
@@ -246,7 +246,25 @@ body
     
   }
 
-
+#feelslike::after
+  {
+    content: ' \00b0';
+  }
+#humidity::after
+{
+    content: ' %';
+}
+#windspeed::after{
+    content: ' mph';
+}
+#pressure::after
+{
+    content: ' hPa';
+}
+#visibility::after
+{
+    content: ' km';
+}
 /* Scrollbar style */
 /* width */
 ::-webkit-scrollbar {

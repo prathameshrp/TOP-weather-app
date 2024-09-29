@@ -9,6 +9,12 @@ function returnObj(data) {
     current: {
       temperature: currentConditions.temp,
       conditions: currentConditions.conditions,
+      uvindex: currentConditions.uvindex,
+      feelslike: currentConditions.feelslike,
+      humidity: currentConditions.humidity,
+      windspeed: currentConditions.windspeed,
+      pressure: currentConditions.pressure,
+      visibility: currentConditions.visibility,
       icon: currentConditions.icon,
     },
     day: dayConditions,
