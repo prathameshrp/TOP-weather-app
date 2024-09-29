@@ -1,8 +1,9 @@
 import './style.css';
-import fetchData, {forecast} from './weatherParser';
+import fetchData, { forecast } from './weatherParser';
 import {
   updateWeatherBoard,
   updateWeatherPallete,
+  updateForecastPallete,
 } from './domHandler';
 
 const context = {
@@ -23,5 +24,6 @@ let forecastData;
 forecast(context)
   .then((response) => {
     forecastData = response;
-    console.log(forecastData);
+    updateForecastPallete(response)
+    // console.log(forecastData);
   });

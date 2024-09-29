@@ -55,8 +55,31 @@ function updateWeatherPallete(dayData) {
   });
 }
 
+function updateForecastPallete(data) {
+  const [days] = [data.days];
+
+  days.forEach((day) => {
+    const forecastPallete = document.querySelector('.forecast-pallete');
+    const template = document.querySelector('.day-stamp-temp');
+    const dayBoard = template.content.cloneNode(true);
+
+    const date = dayBoard.querySelector('#forecast-date');
+    const weekDay = dayBoard.querySelector('#forecast-day');
+    // const icn = dayBoard.querySelector('#forecast-icn');
+    const tmp = dayBoard.querySelector('#forecast-temp');
+
+    date.textContent = day.datetime;
+    weekDay.textContent = 'placeholder';
+    const maxTemp = day.tempmax;
+    const minTemp = day.tempmin;
+    if (tempUnit) tmp.textContent = `${Math.round(farenheitToDegree(maxTemp))}\u00b0 / ${Math.round(farenheitToDegree(minTemp))}`;
+    else tmp.textContent = `${Math.round(maxTemp)} / ${Math.round(minTemp)}`;
+
+    forecastPallete.appendChild(dayBoard);
+  });
+}
 export {
   updateWeatherBoard,
   updateWeatherPallete,
-
+  updateForecastPallete,
 };
