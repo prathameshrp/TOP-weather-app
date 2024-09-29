@@ -7,12 +7,14 @@ import {
 } from './domHandler';
 
 import validateData from './validateInput';
+import getLocation from './userLocation';
 
 // console.log(imgs['./clear-day.svg']);
 const currContext = {
   location: 'pune',
   date: (new Date()).toISOString(),
 };
+
 
 function mediate(context) {
   let data;
@@ -35,6 +37,12 @@ function mediate(context) {
     // console.log(forecastData);
     });
 }
+getLocation().then((response) => {
+  const place = response.features[0].properties.village;
+  currContext.location = place;
+  mediate(currContext);
+});
+
 mediate(currContext);
 
 (function runContext() {
