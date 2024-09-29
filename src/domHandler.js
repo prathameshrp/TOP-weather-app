@@ -71,7 +71,7 @@ function updateForecastPallete(data) {
     const tmp = dayBoard.querySelector('#forecast-temp');
 
     date.textContent = day.datetime;
-    weekDay.textContent = format(new Date(day.datetime), 'EEEE').substring(0, 3);
+    weekDay.textContent = format(new Date(day.datetime), 'EEE');
     const maxTemp = day.tempmax;
     const minTemp = day.tempmin;
     if (tempUnit) tmp.textContent = `${Math.round(farenheitToDegree(maxTemp))}\u00b0 / ${Math.round(farenheitToDegree(minTemp))}\u00b0`;
