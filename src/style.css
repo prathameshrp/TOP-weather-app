@@ -59,14 +59,53 @@ body
 #main-header .menu
 {
     display: flex;
+    justify-content: center;
+    align-items: center;
     list-style-type: none;
-    gap: 0.5em;
-    font-size: calc(0.4rem + var(--resizer));
+    gap: 0.2em;
+    height: clamp(20px, 4vh, 40px);
 }
 
+.menu li
+{
+    /* height: clamp(20px, vh, 40px); */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* padding: 16px calc(0.04rem + var(--resizer)); */
+    margin: 0 max(5px, calc(var(--resizer) - 0.8rem));
+    
+}
 .menu #search
 {
+    outline: none;
+    border: 1px solid gray;
+    height: 100%;
     background-color: var(--primary-clr);
+    font-size: calc(var(--resizer));
+    font-weight: 400;
+    width: clamp(240px, 24vw, 440px);
+    /* width: 240px; */
+    /* width: 24vw; */
+    /* width: 440px; */
+    padding: 16px calc(0.04rem + var(--resizer));
+
+}
+
+.menu #search-btn
+{
+    color: #0c0f16;
+    /* text-align: center; */
+    font-size: calc(var(--resizer));
+    padding: min(8px, 4vh) calc(0.8rem + var(--resizer));
+    
+    /* background-color: aqua; */
+
+}
+
+.menu i{
+    font-size: calc(0.8rem + var(--resizer));
+
 }
 .container
 {
