@@ -11,19 +11,32 @@ const context = {
   date: (new Date()).toISOString(),
 };
 
-let data;
-fetchData(context)
-  .then((response) => {
-    data = response;
-    updateWeatherBoard(data);
-    // console.log('day:', data.day);
-    updateWeatherPallete(data.day);
-  });
+function mediate(context) {
+  let data;
+  fetchData(context)
+    .then((response) => {
+      data = response;
+      updateWeatherBoard(data);
+      // console.log('day:', data.day);
+      updateWeatherPallete(data.day);
+    });
 
-let forecastData;
-forecast(context)
-  .then((response) => {
-    forecastData = response;
-    updateForecastPallete(forecastData);
+  let forecastData;
+  forecast(context)
+    .then((response) => {
+      forecastData = response;
+      updateForecastPallete(forecastData);
     // console.log(forecastData);
+    });
+}
+mediate(context);
+
+(function runContext() {
+  const searchElement = document.querySelector('#search');
+  const searchBtn = document.querySelector('#search-btn')
+  searchBtn.addEventListener('click', () => {
+    [context.location, context.date] = [searchElement.value, (new Date()).toISOString()];
+
+    mediate(context);
   });
+}());

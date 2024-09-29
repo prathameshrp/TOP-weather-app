@@ -39,10 +39,10 @@ function updateWeatherBoard(data) {
 
 function updateWeatherPallete(dayData) {
   const hrs = dayData.hours;
-
+  const template = document.querySelector('.time-stamp-temp');
+  const dayPallete = document.querySelector('.day-pallete');
+  dayPallete.replaceChildren(template);
   hrs.forEach((hr) => {
-    const dayPallete = document.querySelector('.day-pallete');
-    const template = document.querySelector('.time-stamp-temp');
     const hrBoard = template.content.cloneNode(true);
 
     const time = hrBoard.querySelector('#hr');
@@ -59,10 +59,10 @@ function updateWeatherPallete(dayData) {
 
 function updateForecastPallete(data) {
   const [days] = [data.days];
-
+  const template = document.querySelector('.day-stamp-temp');
+  const forecastPallete = document.querySelector('.forecast-pallete');
+  forecastPallete.replaceChildren(template);
   days.forEach((day) => {
-    const forecastPallete = document.querySelector('.forecast-pallete');
-    const template = document.querySelector('.day-stamp-temp');
     const dayBoard = template.content.cloneNode(true);
 
     const date = dayBoard.querySelector('#forecast-date');
