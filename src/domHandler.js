@@ -82,7 +82,7 @@ function updateForecastPallete(data) {
     const date = dayBoard.querySelector('#forecast-date');
     const weekDay = dayBoard.querySelector('#forecast-day');
     const icn = dayBoard.querySelector('#forecast-icn');
-    // icn.src = ${hr.icon}.svg;
+    icn.src = cache[`./${day.icon}.svg`];
     const tmp = dayBoard.querySelector('#forecast-temp');
     date.textContent = format(new Date(day.datetime), 'do MMM');
     weekDay.textContent = format(new Date(day.datetime), 'EEE');
