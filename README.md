@@ -1,3 +1,5 @@
-# webpack-template
+# TOP weather APP
 
-All required initial configuration to get started with webpack
+A basic weather app to display essential information.
+[!NOTE]
+> This project uses `Visual Crossing` API 
