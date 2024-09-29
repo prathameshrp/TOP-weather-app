@@ -107,7 +107,7 @@ body
     padding: calc(0.2rem + var(--resizer));
 }
 
-.day-pallete
+.day-pallete, .forecast-pallete
 {
     display: flex;
     padding: calc(0.4rem + var(--resizer));
@@ -128,6 +128,16 @@ body
 
 }
 
+.forecast-pallete
+{
+    flex-direction: column;
+}
+
+.forecast-pallete .day-stamp
+{
+    display: flex;
+    justify-content: space-between;
+}
 /* Scrollbar style */
 /* width */
 ::-webkit-scrollbar {
